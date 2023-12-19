@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 import {View, Text, StyleSheet, Dimensions, TextInput} from 'react-native';
 import {color, parameters} from '../../global/Styles';
-import {Icon, Button} from 'react-native-elements';
+import {Icon, Button, SocialIcon} from 'react-native-elements';
 import Header from '../../components/Header';
 import * as Animatable from 'react-native-animatable';
 
@@ -20,9 +20,16 @@ export default function SignInScreen() {
         <Text style={styles.text1}>registered with your account</Text>
       </View>
       <View style={{marginTop: 20}}>
-        <View>
+        <View style={[styles.TextInput2, {marginBottom: 10}]}>
+          <Animatable.View>
+            <Icon
+              name="person"
+              iconStyle={{color: color.grey3}}
+              type="material"
+            />
+          </Animatable.View>
           <TextInput
-            style={styles.TextInput1}
+            style={{width: '90%', color: 'black'}}
             placeholder="Email"
             placeholderTextColor={'#bbb'}
             ref={TextInput1}
@@ -74,10 +81,38 @@ export default function SignInScreen() {
           Forget Password ?
         </Text>
       </View>
-      <View style={{alignItems: 'center', marginTop: 20}}>
+      <View style={{alignItems: 'center', marginTop: 40}}>
         <Text style={{fontSize: 20, fontWeight: 'bold', color: 'black'}}>
           OR
         </Text>
+      </View>
+      <View style={{marginHorizontal: 10, marginTop: 25}}>
+        <SocialIcon
+          title="Sign In With Facebook"
+          button
+          type="facebook"
+          style={styles.SocialIcon}
+          onPress={() => {}}
+        />
+      </View>
+      <View style={{marginHorizontal: 10, marginTop: 10}}>
+        <SocialIcon
+          title="Sign In With Google"
+          button
+          type="google"
+          style={styles.SocialIcon}
+          onPress={() => {}}
+        />
+      </View>
+      <View style={{marginTop: 25, marginLeft: 15}}>
+        <Text style={{...styles.text1}}>New on Food Application ?</Text>
+      </View>
+      <View style={{alignItems: 'flex-end', marginHorizontal: 20}}>
+        <Button
+          title="Create an account"
+          buttonStyle={styles.createButton}
+          titleStyle={styles.createButtonTitle}
+        />
       </View>
     </View>
   );
@@ -110,5 +145,27 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     alignItems: 'center',
     paddingLeft: 15,
+  },
+  SocialIcon: {
+    borderRadius: 12,
+    height: 50,
+  },
+  createButton: {
+    backgroundColor: 'white',
+    alignContent: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderRadius: 12,
+    borderColor: '#ff8c52',
+    height: 40,
+    paddingHorizontal: 20,
+  },
+  createButtonTitle: {
+    color: '#ff8c52',
+    fontSize: 16,
+    fontWeight: 'bold',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: -3,
   },
 });
