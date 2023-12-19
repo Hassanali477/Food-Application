@@ -13,6 +13,26 @@ export const color = {
 
 export const parameters = {
   headerHeight: 40,
+  
+  styledButton: {
+    backgroundColor: '#ff8c52',
+    alignContent: 'center',
+    justifyContent: 'center',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#ff8c52',
+    height: 50,
+    paddingHorizontal: 50,
+    width: '100%',
+  },
+  buttonTitle: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+    alignItem: 'center',
+    justifyContent: 'center',
+    marginTop: -3,
+  },
 };
 
 export default titleText = {

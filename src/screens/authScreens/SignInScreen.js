@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 import {View, Text, StyleSheet, Dimensions, TextInput} from 'react-native';
 import {color, parameters} from '../../global/Styles';
-import {Icon} from 'react-native-elements';
+import {Icon, Button} from 'react-native-elements';
 import Header from '../../components/Header';
 import * as Animatable from 'react-native-animatable';
 
@@ -24,6 +24,7 @@ export default function SignInScreen() {
           <TextInput
             style={styles.TextInput1}
             placeholder="Email"
+            placeholderTextColor={'#bbb'}
             ref={TextInput1}
           />
         </View>
@@ -38,8 +39,9 @@ export default function SignInScreen() {
             />
           </Animatable.View>
           <TextInput
-            style={{width: '80%'}}
+            style={{width: '80%', color: 'black'}}
             placeholder="Password"
+            placeholderTextColor={'#bbb'}
             ref={TextInput2}
             onFocus={() => {
               setTextInput2Fosseud(false);
@@ -60,6 +62,23 @@ export default function SignInScreen() {
           </Animatable.View>
         </View>
       </View>
+      <View style={{marginHorizontal: 20, marginTop: 30}}>
+        <Button
+          title="SIGN IN"
+          buttonStyle={parameters.styledButton}
+          titleStyle={parameters.buttonTitle}
+        />
+      </View>
+      <View style={{alignItems: 'center', marginTop: 15}}>
+        <Text style={{...styles.text1, textDecorationLine: 'underline'}}>
+          Forget Password ?
+        </Text>
+      </View>
+      <View style={{alignItems: 'center', marginTop: 20}}>
+        <Text style={{fontSize: 20, fontWeight: 'bold', color: 'black'}}>
+          OR
+        </Text>
+      </View>
     </View>
   );
 }
@@ -79,6 +98,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginBottom: 20,
     paddingLeft: 15,
+    color: color.text1,
   },
   TextInput2: {
     borderWidth: 1,
