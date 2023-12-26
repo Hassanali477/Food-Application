@@ -1,23 +1,25 @@
-import {StyleSheet, Text, View, StatusBar} from 'react-native';
+import 'react-native-gesture-handler';
+import {StyleSheet, Text, View, StatusBar, LogBox} from 'react-native';
 import React from 'react';
+import {color} from './src/global/Styles';
+import RootNavigator from './src/authNavigation/RootNavigator';
+import SignInWelcomeScreen from './src/screens/authScreens/SignInWelcomeScreen';
 
-import {color, parameters} from './src/global/Styles';
-import SignInScreen from './src/screens/authScreens/SignInScreen';
-
-const App = props => {
+const App = () => {
+  LogBox.ignoreAllLogs();
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={color.statusbar} />
-      <SignInScreen />
+      <RootNavigator />
     </View>
   );
 };
 
-export default App;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'#fff',
+    backgroundColor: '#fff',
   },
 });
+
+export default App;

@@ -9,11 +9,12 @@ export const color = {
   cardbackground: 'white',
   statusbar: '#ff8c52',
   headerText: 'white',
+  lightgreen: '#66DF48',
 };
 
 export const parameters = {
   headerHeight: 40,
-  
+
   styledButton: {
     backgroundColor: '#ff8c52',
     alignContent: 'center',
@@ -29,7 +30,7 @@ export const parameters = {
     color: 'white',
     fontSize: 20,
     fontWeight: 'bold',
-    alignItem: 'center',
+    alignItems: 'center',
     justifyContent: 'center',
     marginTop: -3,
   },

@@ -1,0 +1,137 @@
+export const filterData = [
+  {name: 'Fast food', image: require('../Assets/fastFood.jpg'), id: '0'},
+  {name: 'Burger', image: require('../Assets/Burger.jpg'), id: '1'},
+  {name: 'Salad', image: require('../Assets/Salad.jpg'), id: '2'},
+  {name: 'Coffee', image: require('../Assets/Coffee.jpg'), id: '3'},
+  {name: 'Pizza', image: require('../Assets/Pizza.jpg'), id: '4'},
+  {name: 'Sea', image: require('../Assets/Sea.jpg'), id: '5'},
+  {name: 'Maxican', image: require('../Assets/Maxican.jpg'), id: '6'},
+  {name: 'Chinese', image: require('../Assets/Chinese.jpg'), id: '7'},
+];
+
+export const restaurantsData = [
+  {
+    restaurantName: 'McDonalds',
+    farAway: '21.2',
+    businessAddress: '22 Bessie street, Cape Town',
+    images: require('../Assets/Card.jpg'),
+    averageReview: 4.9,
+    numberofReview: 272,
+    coordinates: {lat: -26.1888612, lng: 28.246325}, // Added colon after coordinates
+    discount: 10,
+    deliveryTime: 15,
+    collectTime: 5,
+    foodType: 'Burgers, Wraps, Milkshakes...',
+    productData: [
+      {
+        name: 'Hand cut chips',
+        price: 29.3,
+        image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate5.png',
+      },
+      {
+        name: 'Big Mac',
+        price: 50.8,
+        image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate4.png',
+      },
+      {
+        name: 'Chicken Burger',
+        price: 70,
+        image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate3.png',
+      },
+    ],
+    id: 0,
+  },
+  {
+    restaurantName: 'KFC',
+    farAway: '12.7',
+    businessAddress: '22 Bessie street, Cape Town',
+    images: require('../Assets/Card2.jpg'),
+    averageReview: 4.3,
+    numberOfReview: 306,
+    coordinates: {lat: 26.1891648, lng: 28.2441808},
+    discount: 20,
+    deliveryTime: 30,
+    collectTime: 18,
+    foodType: 'Chicken, Chicken wings',
+    productData: [
+      {
+        name: 'Hand cut chips',
+        price: 29.3,
+        image: '',
+      },
+      {
+        name: 'Big Mac',
+        price: 50.8,
+        image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate4.png',
+      },
+      {
+        name: 'Chicken Burger',
+        price: 70,
+        image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate3.png',
+      },
+    ],
+    id: 1,
+  },
+  {
+    restaurantName: 'Steers',
+    farAway: '5',
+    businessAddress: '17 Olivia Rd, Johannesburg',
+    images: require('../Assets/Card3.jpg'),
+    coordinates: {lat: -26.1886781, lng: 28.244879},
+    averageReview: 4.9,
+    numberOfReview: 1272,
+    discount: 12,
+    deliveryTime: 25,
+    collectTime: 15,
+    foodType: 'Flame grilled beef Burgers',
+    productData: [
+      {
+        name: 'Hand cut chips',
+        price: 29.3,
+        image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate5.png',
+      },
+      {
+        name: 'Big Mac',
+        price: 50.8,
+        image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate4.png',
+      },
+      {
+        name: 'Chicken Burger',
+        price: 70,
+        image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate3.png',
+      },
+    ],
+    id: 2,
+  },
+  {
+    restaurantName: 'Roman Pizza',
+    farAway: '7',
+    businessAddress: '15 Atlas Rd, Kempton Park',
+    images: require('../Assets/Card4.jpg'),
+    coordinates: {lat: -26.1845336, lng: 28.2481691},
+    averageReview: 4.3,
+    numberOfReview: 700,
+    discount: null,
+    deliveryTime: 20,
+    collectTime: 10,
+    foodType: 'Chicken pizza, Vegetarian pizza',
+    productData: [
+      {
+        name: 'Hand cut chips',
+        price: 29.3,
+        image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate5.png',
+      },
+      {
+        name: 'Big Mac',
+        price: 50.8,
+        image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate4.png',
+      },
+      {
+        name: 'Chicken Burger',
+        price: 70,
+        image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate3.png',
+      },
+    ],
+    id: 3,
+  },
+];

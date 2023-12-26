@@ -3,15 +3,16 @@ import {View, Text, StyleSheet, Dimensions, TextInput} from 'react-native';
 import {color, parameters} from '../../global/Styles';
 import {Icon, Button, SocialIcon} from 'react-native-elements';
 import Header from '../../components/Header';
-import * as Animatable from 'react-native-animatable';
+import {AppState} from 'react-native';
+// import * as Animatable from 'react-native-animatable';
 
-export default function SignInScreen() {
+export default function SignInScreen({navigation}) {
   const [textInput2Fosseud, setTextInput2Fosseud] = useState(false);
   const TextInput1 = useRef(1);
   const TextInput2 = useRef(2);
   return (
     <View style={styles.container}>
-      <Header title="My Account" type="arrow-left" />
+      <Header title="My Account" type="arrow-left" navigation={navigation} />
       <View style={{marginLeft: 20, marginTop: 10}}>
         <Text style={titleText}>Sign-In</Text>
       </View>
@@ -21,13 +22,13 @@ export default function SignInScreen() {
       </View>
       <View style={{marginTop: 20}}>
         <View style={[styles.TextInput2, {marginBottom: 10}]}>
-          <Animatable.View>
-            <Icon
-              name="person"
-              iconStyle={{color: color.grey3}}
-              type="material"
-            />
-          </Animatable.View>
+          {/* <Animatable.View> */}
+          <Icon
+            name="person"
+            iconStyle={{color: color.grey3}}
+            type="material"
+          />
+          {/* </Animatable.View> */}
           <TextInput
             style={{width: '90%', color: 'black'}}
             placeholder="Email"
@@ -36,19 +37,16 @@ export default function SignInScreen() {
           />
         </View>
         <View style={styles.TextInput2}>
-          <Animatable.View
+          {/* <Animatable.View
             animation={textInput2Fosseud ? '' : 'fadeInLeft'}
-            duration={300}>
-            <Icon
-              name="lock"
-              iconStyle={{color: color.grey3}}
-              type="material"
-            />
-          </Animatable.View>
+            duration={300}> */}
+          <Icon name="lock" iconStyle={{color: color.grey3}} type="material" />
+          {/* </Animatable.View> */}
           <TextInput
             style={{width: '80%', color: 'black'}}
             placeholder="Password"
             placeholderTextColor={'#bbb'}
+            secureTextEntry={true}
             ref={TextInput2}
             onFocus={() => {
               setTextInput2Fosseud(false);
@@ -57,16 +55,16 @@ export default function SignInScreen() {
               setTextInput2Fosseud(true);
             }}
           />
-          <Animatable.View
+          {/* <Animatable.View
             animation={textInput2Fosseud ? '' : 'fadeInLeft'}
-            duration={300}>
-            <Icon
-              name="visibility-off"
-              iconStyle={{color: color.grey3}}
-              type="material"
-              style={{marginRight: 10}}
-            />
-          </Animatable.View>
+            duration={300}> */}
+          <Icon
+            name="visibility-off"
+            iconStyle={{color: color.grey3}}
+            type="material"
+            style={{marginRight: 10}}
+          />
+          {/* </Animatable.View> */}
         </View>
       </View>
       <View style={{marginHorizontal: 20, marginTop: 30}}>
@@ -74,6 +72,9 @@ export default function SignInScreen() {
           title="SIGN IN"
           buttonStyle={parameters.styledButton}
           titleStyle={parameters.buttonTitle}
+          onPress={() => {
+            navigation.navigate('DrawerNavigator');
+          }}
         />
       </View>
       <View style={{alignItems: 'center', marginTop: 15}}>
