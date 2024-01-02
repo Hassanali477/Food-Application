@@ -4,7 +4,7 @@ import {color, parameters} from '../../global/Styles';
 import {Icon, Button, SocialIcon} from 'react-native-elements';
 import Header from '../../components/Header';
 import {AppState} from 'react-native';
-// import * as Animatable from 'react-native-animatable';
+import * as Animatable from 'react-native-animatable';
 
 export default function SignInScreen({navigation}) {
   const [textInput2Fosseud, setTextInput2Fosseud] = useState(false);
@@ -22,13 +22,13 @@ export default function SignInScreen({navigation}) {
       </View>
       <View style={{marginTop: 20}}>
         <View style={[styles.TextInput2, {marginBottom: 10}]}>
-          {/* <Animatable.View> */}
-          <Icon
-            name="person"
-            iconStyle={{color: color.grey3}}
-            type="material"
-          />
-          {/* </Animatable.View> */}
+          <Animatable.View>
+            <Icon
+              name="person"
+              iconStyle={{color: color.grey3}}
+              type="material"
+            />
+          </Animatable.View>
           <TextInput
             style={{width: '90%', color: 'black'}}
             placeholder="Email"
@@ -37,11 +37,15 @@ export default function SignInScreen({navigation}) {
           />
         </View>
         <View style={styles.TextInput2}>
-          {/* <Animatable.View
+          <Animatable.View
             animation={textInput2Fosseud ? '' : 'fadeInLeft'}
-            duration={300}> */}
-          <Icon name="lock" iconStyle={{color: color.grey3}} type="material" />
-          {/* </Animatable.View> */}
+            duration={300}>
+            <Icon
+              name="lock"
+              iconStyle={{color: color.grey3}}
+              type="material"
+            />
+          </Animatable.View>
           <TextInput
             style={{width: '80%', color: 'black'}}
             placeholder="Password"
@@ -55,16 +59,16 @@ export default function SignInScreen({navigation}) {
               setTextInput2Fosseud(true);
             }}
           />
-          {/* <Animatable.View
+          <Animatable.View
             animation={textInput2Fosseud ? '' : 'fadeInLeft'}
-            duration={300}> */}
-          <Icon
-            name="visibility-off"
-            iconStyle={{color: color.grey3}}
-            type="material"
-            style={{marginRight: 10}}
-          />
-          {/* </Animatable.View> */}
+            duration={300}>
+            <Icon
+              name="visibility-off"
+              iconStyle={{color: color.grey3}}
+              type="material"
+              style={{marginRight: 10}}
+            />
+          </Animatable.View>
         </View>
       </View>
       <View style={{marginHorizontal: 20, marginTop: 30}}>

@@ -20,7 +20,6 @@ export default function SignInWelcomeScreen({navigation}) {
           justifyContent: 'flex-start',
           alignItems: 'center',
           justifyContent: 'center',
-          //   marginTop: getStatusBarHeight(),
           padding: 20,
         }}>
         <Text
@@ -28,7 +27,6 @@ export default function SignInWelcomeScreen({navigation}) {
             fontSize: 26,
             color: color.buttons,
             fontWeight: 'bold',
-            // marginTop: 60,
           }}>
           DISCOVER RESTAURENTS
         </Text>
@@ -38,12 +36,6 @@ export default function SignInWelcomeScreen({navigation}) {
       </View>
       <View style={{flex: 4, justifyContent: 'center'}}>
         <Swiper autoplay={true}>
-          <View style={styles.slide1}>
-            <Image
-              style={{height: '100%', width: '100%'}}
-              source={require('../../Assets/swiperFirstImg.jpg')}
-            />
-          </View>
           <View style={styles.slide2}>
             <Image
               style={{height: '100%', width: '100%'}}

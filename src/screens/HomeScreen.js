@@ -14,7 +14,6 @@ import {Icon} from 'react-native-elements';
 import HomeHeader from '../components/HomeHeader';
 import {color, parameters} from '../global/Styles';
 import {filterData, restaurantsData} from '../global/Data';
-import Countdown from 'react-native-countdown-component';
 import FoodCard from '../components/FoodCard';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -139,20 +138,6 @@ export default function HomeScreen({navigation}) {
           <Text style={[styles.headerText, {paddingVertical: 10}]}>
             Free delivery now
           </Text>
-        </View>
-        <View>
-          <View
-            style={{flexDirection: 'row', alignsItem: 'center', marginTop: 10}}>
-            <Text style={styles.countDown}>Options changing in</Text>
-            <Countdown
-              until={3600}
-              size={14}
-              digitStyle={{backgroundColor: color.lightgreen}}
-              digitTextStyle={{color: color.cardbackground}}
-              timeToShow={['M', 'S']}
-              timeLabels={{m: 'Min', s: 'Sec'}}
-            />
-          </View>
         </View>
         <View>
           <FlatList
