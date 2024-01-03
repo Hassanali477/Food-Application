@@ -13,7 +13,7 @@ export default function AuthStack() {
   return (
     <Stack.Navigator
       navigationOptions={{gesturesEnabled: false}}
-      initialRouteName="DrawerNavigator"
+      // initialRouteName="DrawerNavigator"
       screenOptions={{
         headerShown: false,
       }}>
