@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useContext} from 'react';
 import {View, Text, StyleSheet, Dimensions, TextInput} from 'react-native';
 import {color, parameters} from '../../global/Styles';
 import {Icon, Button, SocialIcon} from 'react-native-elements';
@@ -7,8 +7,11 @@ import {AppState} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {Formik} from 'formik';
 import auth from '@react-native-firebase/auth';
+import {SignInContext} from '../../contexts/authcontext';
 
 export default function SignInScreen({navigation}) {
+
+  const {dispatchSignedIn} = useContext(SignInContext)
   const [textInput2Fosseud, setTextInput2Fosseud] = useState(false);
   const TextInput1 = useRef(1);
   const TextInput2 = useRef(2);
@@ -17,11 +20,19 @@ export default function SignInScreen({navigation}) {
     // console.log(auth(), 'Auth check');
     // try {
     const {password, email} = data;
+
+    if (email.length <= 0) {
+      return alert('email required');
+    }
+    if (password.length < 8) {
+      return alert('password must be 8 characters');
+    }
+
     await auth()
       .signInWithEmailAndPassword(email, password)
       .then(result => {
         if (result) {
-          console.log('USER SIGNED-IN');
+          dispatchSignedIn({type:'UPDATE_SIGN_IN',payload:{userToken:'signed-in'}})
         }
       })
       .catch(err => {
@@ -150,6 +161,7 @@ export default function SignInScreen({navigation}) {
           title="Create an account"
           buttonStyle={styles.createButton}
           titleStyle={styles.createButtonTitle}
+          onPress={() => [navigation.navigate('SignUpScreen')]}
         />
       </View>
     </View>

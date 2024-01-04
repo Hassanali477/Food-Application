@@ -5,6 +5,7 @@ import {color} from './src/global/Styles';
 import RootNavigator from './src/authNavigation/RootNavigator';
 import SplashScreen from 'react-native-splash-screen';
 import SignInWelcomeScreen from './src/screens/authScreens/SignInWelcomeScreen';
+import {SignInContextProvider} from './src/contexts/authcontext';
 
 const App = () => {
   LogBox.ignoreAllLogs();
@@ -12,10 +13,12 @@ const App = () => {
     SplashScreen.hide();
   });
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor={color.statusbar} />
-      <RootNavigator />
-    </View>
+    <SignInContextProvider>
+      <View style={styles.container}>
+        <StatusBar barStyle="light-content" backgroundColor={color.statusbar} />
+        <RootNavigator />
+      </View>
+    </SignInContextProvider>
   );
 };
 
