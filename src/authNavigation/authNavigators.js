@@ -4,7 +4,6 @@ import SignInScreen from '../screens/authScreens/SignInScreen';
 import {createStackNavigator} from '@react-navigation/stack';
 // import HomeScreen from '../screens/HomeScreen';
 // import RootClientTabs from './ClientTabs';
-import SplashScreen from '../screens/authScreens/SplashScreen';
 import SignUpScreen from '../screens/authScreens/SignUpScreen';
 const Stack = createStackNavigator();
 

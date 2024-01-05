@@ -1,4 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
+import auth from '@react-native-firebase/auth';
+import {SignInContext} from '../contexts/authcontext';
 import {
   View,
   Text,
@@ -7,6 +9,7 @@ import {
   Alert,
   Switch,
   StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
 import {
   DrawerContentScrollView,
@@ -17,10 +20,27 @@ import {Avatar, Button, Icon} from 'react-native-elements';
 import {color} from '../global/Styles';
 
 export default function DrawerContent(props) {
+  const {dispatchSignedIn} = useContext(SignInContext);
+  async function signOut() {
+    try {
+      auth()
+      .signOut()
+      .then(() => {
+          console.log('working');
+          console.log('USER SUCCESSFULLY SIGN OUT');
+          dispatchSignedIn({
+            type: 'UPDATE_SIGN_IN',
+            payload: {userToken: null},
+          });
+        });
+    } catch (error) {
+      Alert.alert(error.code);
+    }
+  }
   return (
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
-        <View style={{backgroundColor: color.buttons}}>
+        <View style={{backgroundColor: color.buttons, marginBottom: 10}}>
           <View
             style={{
               flexDirection: 'row',
@@ -32,11 +52,13 @@ export default function DrawerContent(props) {
               rounded
               avatarStyle={styles.avatar}
               size={75}
-              source={require('../Assets/ProfileLogo.png')}
+              source={{
+                uri: 'https://img.freepik.com/free-vector/hand-drawn-design-world-food-day_23-2148648454.jpg?w=740&t=st=1704353381~exp=1704353981~hmac=06de3a980199cd40660d1b460de18fe0cbe02b98285e1d55e3b6aeb7f519c838',
+              }}
             />
             <View style={{marginLeft: 10}}>
-              <Text style={styles.ProfileText}>McDonald</Text>
-              <Text style={styles.ProfileEmail}>Mcdonald@gmail.com</Text>
+              <Text style={styles.ProfileText}>Food Fest</Text>
+              <Text style={styles.ProfileEmail}>Foodie@oulook.com</Text>
             </View>
           </View>
           <View
@@ -58,7 +80,7 @@ export default function DrawerContent(props) {
                     color: color.cardbackground,
                     fontSize: 18,
                   }}>
-                  0
+                  1
                 </Text>
                 <Text
                   style={{
@@ -155,6 +177,7 @@ export default function DrawerContent(props) {
           </View>
         </View>
       </DrawerContentScrollView>
+
       <DrawerItem
         label="Sign Out"
         icon={({color, size}) => (
@@ -163,6 +186,9 @@ export default function DrawerContent(props) {
             name="logout-variant"
             color={color}
             size={size}
+            onPress={() => {
+              signOut();
+            }}
           />
         )}
       />

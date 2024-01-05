@@ -8,7 +8,8 @@ export default function RootNavigator() {
   const {signedIn} = useContext(SignInContext);
   return (
     <NavigationContainer>
-      {signedIn.userToken !== 'signed-in' ? <AuthStack /> : <AppStack />}
+      {signedIn.userToken === null ? <AuthStack /> : <AppStack />}
+      {/* <AppStack /> */}
     </NavigationContainer>
   );
 }
