@@ -14,7 +14,10 @@ export function Route1({navigation}) {
           renderItem={({item, index}) => (
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('PrefrencesScreen',{index})
+                navigation.navigate('PrefrencesScreen', {
+                  image: item.image,
+                  index,
+                });
               }}>
               <MenuCard
                 productName={item.meal}
@@ -31,13 +34,6 @@ export function Route1({navigation}) {
   );
 }
 
-export const Route2 = () => <View style={styles.scene2} />;
-export const Route3 = () => <View style={styles.scene2} />;
-export const Route4 = () => <View style={styles.scene2} />;
-export const Route5 = () => <View style={styles.scene2} />;
-export const Route6 = () => <View style={styles.scene2} />;
-export const Route7 = () => <View style={styles.scene2} />;
-export const Route8 = () => <View style={styles.scene2} />;
 const styles = StyleSheet.create({
   scene: {
     flex: 1,

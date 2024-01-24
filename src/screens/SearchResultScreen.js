@@ -3,7 +3,7 @@ import React from 'react';
 import SearchResultCard from '../components/SearchResultCard';
 import {color} from '../global/Styles';
 import {restaurantsData} from '../global/Data';
-
+import {menuDetailedData} from '../global/Data';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function SearchResultScreen({navigation, route}) {
@@ -23,8 +23,14 @@ export default function SearchResultScreen({navigation, route}) {
               restaurantName={item.restaurantName}
               farAway={item.farAway}
               businessAddress={item.businessAddress}
-              productData={item.productData}
-              onPressRestaurantCard={() => {navigation.navigate("RestaurantHomeScreen", {id:index, restaurant:item.restaurantName})}}
+              productData={menuDetailedData}
+              navigation={navigation}
+              onPressRestaurantCard={() => {
+                navigation.navigate('RestaurantHomeScreen', {
+                  id: index,
+                  restaurant: item.restaurantName,
+                });
+              }}
             />
           )}
           ListHeaderComponent={

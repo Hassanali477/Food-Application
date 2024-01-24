@@ -24,8 +24,8 @@ export default function DrawerContent(props) {
   async function signOut() {
     try {
       auth()
-      .signOut()
-      .then(() => {
+        .signOut()
+        .then(() => {
           console.log('working');
           console.log('USER SUCCESSFULLY SIGN OUT');
           dispatchSignedIn({
@@ -46,22 +46,22 @@ export default function DrawerContent(props) {
               flexDirection: 'row',
               alignItems: 'center',
               paddingLeft: 20,
-              paddingVertical: 15,
+              paddingVertical: 25,
             }}>
             <Avatar
               rounded
               avatarStyle={styles.avatar}
               size={75}
               source={{
-                uri: 'https://img.freepik.com/free-vector/hand-drawn-design-world-food-day_23-2148648454.jpg?w=740&t=st=1704353381~exp=1704353981~hmac=06de3a980199cd40660d1b460de18fe0cbe02b98285e1d55e3b6aeb7f519c838',
+                uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGn6TY-wZh6PoeX-I5_b3a2hdVxN-HzejEhshhxqRhedI1hjwCzpfxNGkY6A&s',
               }}
             />
             <View style={{marginLeft: 10}}>
               <Text style={styles.ProfileText}>Food Fest</Text>
-              <Text style={styles.ProfileEmail}>Foodie@oulook.com</Text>
+              <Text style={styles.ProfileEmail}>Foodie@outlook.com</Text>
             </View>
           </View>
-          <View
+          {/* <View
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
@@ -117,65 +117,20 @@ export default function DrawerContent(props) {
                 </Text>
               </View>
             </View>
-          </View>
+          </View> */}
         </View>
         <DrawerItemList {...props} />
-        <DrawerItem
-          label="Payment"
+        {/* <DrawerItem
+          label="Search"
           icon={({color, size}) => (
             <Icon
-              type="material-community"
-              name="credit-card-outline"
+              type="material"
+              name="search"
               color={color}
               size={size}
             />
           )}
-        />
-        <DrawerItem
-          label="Promotions"
-          icon={({color, size}) => (
-            <Icon
-              type="material-community"
-              name="tag-heart"
-              color={color}
-              size={size}
-            />
-          )}
-        />
-        <DrawerItem
-          label="Settings"
-          icon={({color, size}) => (
-            <Icon
-              type="material-community"
-              name="cog-outline"
-              color={color}
-              size={size}
-            />
-          )}
-        />
-        <DrawerItem
-          label="Help"
-          icon={({color, size}) => (
-            <Icon
-              type="material-community"
-              name="lifebuoy"
-              color={color}
-              size={size}
-            />
-          )}
-        />
-        <View style={{borderTopColor: color.grey5, borderTopWidth: 1}}>
-          <Text style={styles.prefreneces}>Prefreneces</Text>
-          <View style={styles.switchText}>
-            <Text style={styles.darkThemeText}>Dark Theme</Text>
-            <View style={{paddingRight: 10}}>
-              <Switch
-                trackColor={{false: '#767577', true: '#81b0ff'}}
-                thumbColor="#f4f3f4"
-              />
-            </View>
-          </View>
-        </View>
+        /> */}
       </DrawerContentScrollView>
 
       <DrawerItem

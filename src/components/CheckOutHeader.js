@@ -1,10 +1,9 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {Icon} from 'react-native-elements';
 import {color, parameters} from '../global/Styles';
 
-export default function HomeHeader({navigation}) {
-  const BadgeIcon = withBadge(0)(Icon);
+const CheckOutHeader = ({navigation}) => {
   return (
     <View style={styles.header}>
       <TouchableOpacity
@@ -12,14 +11,16 @@ export default function HomeHeader({navigation}) {
           alignItems: 'center',
           justifyContent: 'center',
           marginLeft: 15,
+          position: 'absolute',
+          left: 10,
         }}>
         <Icon
           type="material-community"
-          name="menu"
+          name="arrow-left"
           color={color.cardbackground}
           size={32}
           onPress={() => {
-            navigation.toggleDrawer();
+            navigation.goBack();
           }}
         />
       </TouchableOpacity>
@@ -30,34 +31,22 @@ export default function HomeHeader({navigation}) {
             fontSize: 25,
             fontWeight: 'bold',
           }}>
-          ARE YOU HUNGRY ?
+          Checkout
         </Text>
-      </View>
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginRight: 15,
-        }}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('CartItemsScreen')}>
-          <Icon
-            type="material-community"
-            name="cart"
-            color={color.cardbackground}
-            size={35}
-          />
-        </TouchableOpacity>
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     backgroundColor: color.buttons,
-    height: parameters.headerHeight,
-    justifyContent: 'space-between',
+    // height: parameters.headerHeight,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
   },
 });
+
+export default CheckOutHeader;

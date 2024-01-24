@@ -1,19 +1,24 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {color} from '../global/Styles';
 
-const ProductCard = ({name, price, image}) => {
+const ProductCard = ({name, price, image, index, navigation}) => {
   return (
     <View style={styles.view1}>
-      <View style={styles.view2}>
-        <View style={styles.view3}>
-          <Text style={styles.text1}>{name}</Text>
-          <Text style={styles.text1}>PKR {price}</Text>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('PrefrencesScreen', {image: image, index});
+        }}>
+        <View style={styles.view2}>
+          <View style={styles.view3}>
+            <Text style={styles.text1}>{name}</Text>
+            <Text style={styles.text1}>PKR {price}</Text>
+          </View>
+          <View style={styles.view4}>
+            <Image style={styles.image} source={{uri: image}} />
+          </View>
         </View>
-        <View style={styles.view4}>
-          <Image style={styles.image} source={{uri: image}} />
-        </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -27,6 +32,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowColor: 'black',
     margin: 5,
+    marginTop: 30,
     width: 210,
     padding: 10,
   },

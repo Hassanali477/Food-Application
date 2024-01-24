@@ -20,7 +20,9 @@ const SearchResultCard = ({
   businessAddress,
   productData,
   onPressRestaurantCard,
+  navigation,
 }) => {
+  console.log(navigation, 'dasd');
   return (
     <View>
       <TouchableOpacity onPress={onPressRestaurantCard}>
@@ -59,20 +61,24 @@ const SearchResultCard = ({
         </View>
       </TouchableOpacity>
       <View style={{marginTop: 5, paddingBottom: 20}}>
-        <FlatList
-          contentContainerStyle={{paddingBottom: '10%'}}
-          style={{backgroundColor: color.cardbackground, marginLeft: 5}}
-          data={productData}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item, index}) => (
-            <ProductCard
-              image={item.image}
-              name={item.name}
-              price={item.price}
-            />
-          )}
-          horizontal={true}
-        />
+        <TouchableOpacity>
+          <FlatList
+            contentContainerStyle={{paddingBottom: '10%'}}
+            style={{backgroundColor: color.cardbackground, marginLeft: 5}}
+            data={productData}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item, index}) => (
+              <ProductCard
+                image={item.image}
+                name={item.meal}
+                price={item.price}
+                index={index}
+                navigation={navigation}
+              />
+            )}
+            horizontal={true}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );

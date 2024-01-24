@@ -1,5 +1,4 @@
 import React from 'react';
-import RestaurantMapScreen from '../screens/RestaurantMapScreen';
 import DrawerNavigator from './DrawerNavigator';
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -13,13 +12,7 @@ export function AppStack() {
         component={DrawerNavigator}
         options={{headerShown: false}}
       />
-      <App.Screen
-        name="RestaurantMapScreen"
-        component={RestaurantMapScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
+      
     </App.Navigator>
   );
 }

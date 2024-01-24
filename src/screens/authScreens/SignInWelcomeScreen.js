@@ -12,10 +12,17 @@ import {Icon, Button, SocialIcon} from 'react-native-elements';
 import Swiper from 'react-native-swiper';
 import {SignInContext} from '../../contexts/authcontext';
 import auth from '@react-native-firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+{
+  /* {---------------Redux Imports------------} */
+}
+import {connect} from 'react-redux';
+import * as userActions from '../../redux/actions/user';
+import {bindActionCreators} from 'redux';
 
-export default function SignInWelcomeScreen({navigation}) {
+function SignInWelcomeScreen(props) {
   const {dispatchSignedIn} = useContext(SignInContext);
-  useEffect(() => {
+  useEffect(async () => {
     auth().onAuthStateChanged(user => {
       if (user) {
         dispatchSignedIn({
@@ -26,13 +33,27 @@ export default function SignInWelcomeScreen({navigation}) {
         dispatchSignedIn({type: 'UPDATE_SIGN_IN', payload: {userToken: null}});
       }
     });
+    var {actions} = props;
+    var myOrderData = await AsyncStorage.getItem('myorders_key');
+    if (myOrderData == undefined || myOrderData == null || myOrderData == '') {
+    } else {
+      actions.myOrder(JSON.parse(myOrderData));
+    }
+
+    var cartData = await AsyncStorage.getItem('cartitems_key');
+    if (cartData == undefined || cartData == null || cartData == '') {
+    } else {
+      actions.cartItems(JSON.parse(cartData));
+    }
+    
   }, []);
+
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor: 'black'}}>
       <View
         style={{
           flex: 3,
-          justifyContent: 'flex-start',
+          // justifyContent: 'flex-start',
           alignItems: 'center',
           justifyContent: 'center',
           padding: 20,
@@ -50,58 +71,55 @@ export default function SignInWelcomeScreen({navigation}) {
         </Text>
       </View>
       <View style={{flex: 4, justifyContent: 'center'}}>
-        <Swiper autoplay={true}>
-          <View style={styles.slide2}>
-            <Image
-              style={{height: '100%', width: '100%'}}
-              source={require('../../Assets/swiperSecondImg.jpg')}
-            />
-          </View>
-          <View style={styles.slide3}>
-            <Image
-              style={{height: '100%', width: '100%'}}
-              source={require('../../Assets/swiperThirdImg.jpg')}
-            />
-          </View>
-          <View style={styles.slide4}>
-            <Image
-              style={{height: '100%', width: '100%'}}
-              source={require('../../Assets/swiperFourthImg.jpg')}
-            />
-          </View>
-        </Swiper>
+        <View style={styles.slide2}>
+          <Image
+            style={{height: '100%', width: '100%'}}
+            source={require('../../Assets/swiperSecondImg.jpg')}
+          />
+        </View>
       </View>
       <View style={{flex: 4, justifyContent: 'flex-end', marginBottom: 20}}>
         <View style={{marginHorizontal: 20, marginTop: 30}}>
           <Button
-            title="SIGN IN"
+            title="Login "
             buttonStyle={parameters.styledButton}
-            titleStyle={parameters.buttonTitle}
+            titleStyle={[parameters.buttonTitle, {color: 'black'}]}
             onPress={() => {
-              navigation.navigate('SignInScreen');
+              props.navigation.navigate('SignInScreen');
             }}
           />
         </View>
         <View style={{marginHorizontal: 20, marginTop: 30}}>
           <Button
-            title="Create an account"
+            title="Create account"
             buttonStyle={styles.createButton}
             titleStyle={styles.createButtonTitle}
-            onPress={() => [navigation.navigate('SignUpScreen')]}
+            onPress={() => [props.navigation.navigate('SignUpScreen')]}
           />
         </View>
       </View>
     </View>
   );
 }
+{
+  /* {---------------redux State ------------} */
+}
+const mapStateToProps = state => ({
+  userData: state.userData,
+});
+{
+  /* {---------------redux Actions ------------} */
+}
+const ActionCreators = Object.assign({}, userActions);
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(ActionCreators, dispatch),
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SignInWelcomeScreen);
 
 const styles = StyleSheet.create({
-  slide1: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#9DD6EB',
-  },
   slide2: {
     flex: 1,
     alignItems: 'center',
@@ -115,7 +133,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#92BBD9',
   },
   createButton: {
-    backgroundColor: 'white',
+    backgroundColor: color.buttons,
     alignContent: 'center',
     justifyContent: 'center',
     borderWidth: 1,
@@ -125,8 +143,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   createButtonTitle: {
-    color: color.grey1,
-    fontSize: 20,
+    color: 'black',
+    fontSize: 18,
     fontWeight: 'bold',
     alignItems: 'center',
     justifyContent: 'center',

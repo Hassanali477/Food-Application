@@ -16,7 +16,7 @@ export const parameters = {
   headerHeight: 40,
 
   styledButton: {
-    backgroundColor: '#ff8c52',
+    backgroundColor: color.buttons,
     alignContent: 'center',
     justifyContent: 'center',
     borderRadius: 12,
@@ -27,7 +27,7 @@ export const parameters = {
     width: '100%',
   },
   buttonTitle: {
-    color: 'white',
+    color: color.cardbackground,
     fontSize: 20,
     fontWeight: 'bold',
     alignItems: 'center',

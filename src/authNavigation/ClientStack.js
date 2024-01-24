@@ -7,6 +7,7 @@ import RestaurantHomeScreen from '../screens/RestaurantHomeScreen';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import MenuProductScreen from '../screens/MenuProductScreen';
 import PrefrencesScreen from '../screens/PrefrencesScreen';
+import CartItemsScreen from '../screens/CartItemsScreen';
 
 const ClientSearch = createStackNavigator();
 
@@ -52,6 +53,13 @@ export function ClientStack({navigation, route}) {
       <ClientSearch.Screen
         name="PrefrencesScreen"
         component={PrefrencesScreen}
+        options={() => ({
+          headerShown: false,
+        })}
+      />
+      <ClientSearch.Screen
+        name="CartItemsScreen"
+        component={CartItemsScreen}
         options={() => ({
           headerShown: false,
         })}

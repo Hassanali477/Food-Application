@@ -10,21 +10,19 @@ import {
 import {Icon} from 'react-native-elements';
 import {color, parameters} from '../global/Styles';
 
+const SCREEN_WIDTH = Dimensions.get('window').width;
 export default function FoodCard({
-  onPressFoodCard,
   restaurantName,
-  deliveryAvailable,
-  discountAvailable,
-  discountPercent,
   numberOfReview,
   businessAddress,
   farAway,
   averageReview,
   images,
   screenWidth,
+  navigation,
 }) {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate('ClientStack')}>
       <View style={{...styles.cardView, width: screenWidth}}>
         <Image style={{...styles.image, width: screenWidth}} source={images} />
         <View>
@@ -73,6 +71,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
     height: 150,
+    // width: SCREEN_WIDTH ,
+    resizeMode: 'cover',
   },
   restaurantName: {
     fontSize: 17,

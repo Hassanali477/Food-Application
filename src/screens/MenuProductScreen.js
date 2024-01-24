@@ -4,16 +4,7 @@ import {restaurantsData, menu} from '../global/Data';
 import {color} from '../global/Styles';
 import {Icon} from 'react-native-elements';
 import {TabView, TabBar} from 'react-native-tab-view';
-import {
-  Route1,
-  Route2,
-  Route3,
-  Route4,
-  Route5,
-  Route6,
-  Route7,
-  Route8,
-} from './MenuTabs';
+import {Route1} from './MenuTabs';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -37,26 +28,27 @@ const MenuProductScreen = ({navigation, route}) => {
     setModalVisible(true);
   };
   const renderScene = ({route}) => {
-    switch (route.key) {
-      case 1:
-        return <Route1 navigation={navigation} />;
-      case 2:
-        return <Route2 name={navigation} />;
-      case 3:
-        return <Route3 name={navigation} />;
-      case 4:
-        return <Route4 name={navigation} />;
-      case 5:
-        return <Route5 name={navigation} />;
-      case 6:
-        return <Route6 name={navigation} />;
-      case 7:
-        return <Route7 name={navigation} />;
-      case 8:
-        return <Route8 name={navigation} />;
-      default:
-        return null;
-    }
+    return <Route1 navigation={navigation} />;
+    // switch (route.key) {
+    //   case 1:
+    //     return <Route1 navigation={navigation} />;
+    //   case 2:
+    //     return <Route2 name={navigation} />;
+    //   case 3:
+    //     return <Route3 name={navigation} />;
+    //   case 4:
+    //     return <Route4 name={navigation} />;
+    //   case 5:
+    //     return <Route5 name={navigation} />;
+    //   case 6:
+    //     return <Route6 name={navigation} />;
+    //   case 7:
+    //     return <Route7 name={navigation} />;
+    //   case 8:
+    //     return <Route8 name={navigation} />;
+    //   default:
+    //     return null;
+    // }
   };
   return (
     <View style={styles.container}>
@@ -65,21 +57,12 @@ const MenuProductScreen = ({navigation, route}) => {
           name="arrow-left"
           type="material-community"
           size={29}
-          color="black"
+          color="white"
           onPress={() => navigation.goBack()}
         />
         <Text style={styles.text1}>Menu</Text>
       </View>
-      <TabView
-        navigationState={{index, routes}}
-        renderScene={renderScene}
-        onIndexChange={setIndex}
-        initialLayout={SCREEN_WIDTH}
-        renderTabBar={renderTabBar}
-        tabBarPosition="top"
-        navigation={navigation}
-        route={route}
-      />
+      <Route1 navigation={navigation} />
     </View>
   );
 };
@@ -102,12 +85,13 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     paddingTop: 15,
+    paddingVertical: 30,
   },
 
   text1: {
     fontWeight: 'bold',
     marginLeft: 10,
-    color: 'black',
+    color: 'white',
     fontSize: 22,
   },
 

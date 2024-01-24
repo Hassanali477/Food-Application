@@ -13,83 +13,21 @@ import {
 import {Icon} from 'react-native-elements';
 import HomeHeader from '../components/HomeHeader';
 import {color, parameters} from '../global/Styles';
-import {filterData, restaurantsData} from '../global/Data';
+import {
+  filterData,
+  restaurantsData,
+  restaurantsData1,
+  restaurantsData2,
+} from '../global/Data';
 import FoodCard from '../components/FoodCard';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
-export default function HomeScreen({navigation}) {
-  const [delivery, setDelivery] = useState(true);
+export default function HomeScreen({navigation, route}) {
   const [indexCheck, setIndexCheck] = useState('0');
   return (
     <View style={styles.container}>
       <HomeHeader navigation={navigation} />
       <ScrollView stickyHeaderIndices={[0]} showsVerticalScrollIndicator={true}>
-        <View style={{backgroundColor: color.cardbackground, paddingBottom: 5}}>
-          <View
-            style={{
-              marginTop: 10,
-              flexDirection: 'row',
-              justifyContent: 'space-evenly',
-            }}>
-            <TouchableOpacity
-              onPress={() => {
-                setDelivery(true);
-              }}>
-              <View
-                style={{
-                  ...styles.deliveryButton,
-                  backgroundColor: delivery ? color.buttons : color.grey5,
-                }}>
-                <Text style={styles.deliveryText}>Delivery</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                setDelivery(false);
-                navigation.navigate('RestaurantMapScreen');
-              }}>
-              <View
-                style={{
-                  ...styles.deliveryButton,
-                  backgroundColor: delivery ? color.grey5 : color.buttons,
-                }}>
-                <Text style={styles.deliveryText}>Pick Up</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={styles.filterView}>
-          <View style={styles.addressView}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <Icon
-                type="material-community"
-                name="map-marker"
-                color={color.grey1}
-                size={26}
-              />
-              <Text style={{marginLeft: 5, color: 'black'}}>
-                22 Beessie Street
-              </Text>
-            </View>
-            <View style={styles.clockView}>
-              <Icon
-                type="material-community"
-                name="clock-time-four"
-                color={color.grey1}
-                size={26}
-              />
-              <Text style={{marginLeft: 5, color: 'black'}}>Now</Text>
-            </View>
-          </View>
-          <View>
-            <Icon
-              type="material-community"
-              name="tune"
-              color={color.grey1}
-              size={26}
-            />
-          </View>
-        </View>
         <View style={styles.headerViewText}>
           <Text style={styles.headerText}>Categories</Text>
         </View>
@@ -104,6 +42,7 @@ export default function HomeScreen({navigation}) {
               <Pressable
                 onPress={() => {
                   setIndexCheck(item.id);
+                  navigation.navigate('ClientStack');
                 }}>
                 <View
                   style={
@@ -157,6 +96,7 @@ export default function HomeScreen({navigation}) {
                     businessAddress={item.businessAddress}
                     averageReview={item.averageReview}
                     numberOfReview={item.numberOfReview}
+                    navigation={navigation}
                   />
                 </View>
               );
@@ -170,7 +110,7 @@ export default function HomeScreen({navigation}) {
           <FlatList
             style={{marginTop: 10, marginBottom: 10}}
             horizontal={true}
-            data={restaurantsData}
+            data={restaurantsData1}
             keyExtractor={(item, index) => index.toString()}
             showsHorizontalScrollIndicator={false}
             renderItem={({item}) => {
@@ -184,6 +124,7 @@ export default function HomeScreen({navigation}) {
                     businessAddress={item.businessAddress}
                     averageReview={item.averageReview}
                     numberOfReview={item.numberOfReview}
+                    navigation={navigation}
                   />
                 </View>
               );
@@ -194,8 +135,10 @@ export default function HomeScreen({navigation}) {
           <Text style={styles.headerText}>Restaurants in your area</Text>
         </View>
         <View style={{width: SCREEN_WIDTH, paddingTop: 10}}>
-          {restaurantsData.map(item => (
-            <View key={item.id} style={{paddingBottom: 20}}>
+          {restaurantsData2.map(item => (
+            <View
+              key={item.id}
+              style={{paddingBottom: 30, paddingVertical: 10}}>
               <FoodCard
                 screenWidth={SCREEN_WIDTH * 0.95}
                 images={item.images}
@@ -204,27 +147,12 @@ export default function HomeScreen({navigation}) {
                 businessAddress={item.businessAddress}
                 averageReview={item.averageReview}
                 numberOfReview={item.numberOfReview}
+                navigation={navigation}
               />
             </View>
           ))}
         </View>
       </ScrollView>
-      {delivery && (
-        <View style={styles.floatButton}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('RestaurantMapScreen');
-            }}>
-            <Icon
-              name="place"
-              type="material"
-              size={32}
-              color={color.buttons}
-            />
-            <Text style={{color: color.grey2}}>Map</Text>
-          </TouchableOpacity>
-        </View>
-      )}
     </View>
   );
 }
@@ -250,29 +178,13 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     alignItems: 'center',
   },
-  clockView: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginLeft: 20,
-    backgroundColor: color.cardbackground,
-    borderRadius: 15,
-    paddingHorizontal: 5,
-    marginRight: 20,
-  },
-  addressView: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: color.grey5,
-    borderRadius: 15,
-    paddingVertical: 3,
-    justifyContent: 'space-between',
-    paddingHorizontal: 20,
-  },
+
   headerText: {
     color: color.grey1,
     fontSize: 25,
     fontWeight: 'bold',
     paddingLeft: 10,
+    marginTop: 10,
   },
   headerViewText: {
     backgroundColor: color.grey5,
@@ -288,14 +200,6 @@ const styles = StyleSheet.create({
     width: 80,
     margin: 10,
     height: 100,
-  },
-  countDown: {
-    color: color.grey3,
-    fontWeight: 'bold',
-    marginLeft: 15,
-    fontSize: 16,
-    marginTop: 10,
-    marginRight: 5,
   },
   smallCardSelected: {
     borderRadius: 30,

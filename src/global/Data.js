@@ -33,7 +33,7 @@ export const restaurantsData = [
         name: 'Big Mac',
         price: 50.8,
         image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVgA1qexBup3FXpc4lPkcrp0bLhcSK-sJXAFv6aL_yhQ&s',
+          'https://t3.ftcdn.net/jpg/01/00/01/98/240_F_100019883_JiV1c06nylljO3VEESkNvihShSzkqC50.jpg',
       },
       {
         name: 'Chicken Burger',
@@ -67,7 +67,7 @@ export const restaurantsData = [
         name: 'Big Mac',
         price: 50.8,
         image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVgA1qexBup3FXpc4lPkcrp0bLhcSK-sJXAFv6aL_yhQ&s',
+          'https://t3.ftcdn.net/jpg/01/00/01/98/240_F_100019883_JiV1c06nylljO3VEESkNvihShSzkqC50.jpg',
       },
       {
         name: 'Chicken Burger',
@@ -101,7 +101,7 @@ export const restaurantsData = [
         name: 'Big Mac',
         price: 50.8,
         image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVgA1qexBup3FXpc4lPkcrp0bLhcSK-sJXAFv6aL_yhQ&s',
+          'https://t3.ftcdn.net/jpg/01/00/01/98/240_F_100019883_JiV1c06nylljO3VEESkNvihShSzkqC50.jpg',
       },
       {
         name: 'Chicken Burger',
@@ -135,7 +135,285 @@ export const restaurantsData = [
         name: 'Big Mac',
         price: 50.8,
         image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVgA1qexBup3FXpc4lPkcrp0bLhcSK-sJXAFv6aL_yhQ&s',
+          'https://t3.ftcdn.net/jpg/01/00/01/98/240_F_100019883_JiV1c06nylljO3VEESkNvihShSzkqC50.jpg',
+      },
+      {
+        name: 'Chicken Burger',
+        price: 70,
+        image:
+          'https://images.pexels.com/photos/5474836/pexels-photo-5474836.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      },
+    ],
+    id: 3,
+  },
+];
+
+export const restaurantsData1 = [
+  {
+    restaurantName: 'Sea',
+    farAway: '21.2',
+    businessAddress: '22 Bessie street, Cape Town',
+    images: require('../Assets/Sea.jpg'),
+    averageReview: 4.9,
+    numberofReview: 272,
+    coordinates: {lat: -26.1888612, lng: 28.246325}, // Added colon after coordinates
+    discount: 10,
+    deliveryTime: 15,
+    collectTime: 5,
+    foodType: 'Burgers, Wraps, Milkshakes...',
+    productData: [
+      {
+        name: 'Hand cut chips',
+        price: 29.3,
+        image:
+          'https://thecozycook.com/wp-content/uploads/2020/02/Copycat-McDonalds-French-Fries-.jpg',
+      },
+      {
+        name: 'Big Mac',
+        price: 50.8,
+        image:
+          'https://t3.ftcdn.net/jpg/01/00/01/98/240_F_100019883_JiV1c06nylljO3VEESkNvihShSzkqC50.jpg',
+      },
+      {
+        name: 'Chicken Burger',
+        price: 70,
+        image:
+          'https://images.pexels.com/photos/5474836/pexels-photo-5474836.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      },
+    ],
+    id: 0,
+  },
+  {
+    restaurantName: 'Chinese',
+    farAway: '12.7',
+    businessAddress: '22 Bessie street, Cape Town',
+    images: require('../Assets/Chinese.jpg'),
+    averageReview: 4.3,
+    numberOfReview: 306,
+    coordinates: {lat: 26.1891648, lng: 28.2441808},
+    discount: 20,
+    deliveryTime: 30,
+    collectTime: 18,
+    foodType: 'Chicken, Chicken wings',
+    productData: [
+      {
+        name: 'Hand cut chips',
+        price: 29.3,
+        image:
+          'https://thecozycook.com/wp-content/uploads/2020/02/Copycat-McDonalds-French-Fries-.jpg',
+      },
+      {
+        name: 'Big Mac',
+        price: 50.8,
+        image:
+          'https://t3.ftcdn.net/jpg/01/00/01/98/240_F_100019883_JiV1c06nylljO3VEESkNvihShSzkqC50.jpg',
+      },
+      {
+        name: 'Chicken Burger',
+        price: 70,
+        image:
+          'https://images.pexels.com/photos/5474836/pexels-photo-5474836.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      },
+    ],
+    id: 1,
+  },
+  {
+    restaurantName: 'Pizza',
+    farAway: '5',
+    businessAddress: '17 Olivia Rd, Johannesburg',
+    images: require('../Assets/Pizza.jpg'),
+    coordinates: {lat: -26.1886781, lng: 28.244879},
+    averageReview: 4.9,
+    numberOfReview: 1272,
+    discount: 12,
+    deliveryTime: 25,
+    collectTime: 15,
+    foodType: 'Flame grilled beef Burgers',
+    productData: [
+      {
+        name: 'Hand cut chips',
+        price: 29.3,
+        image:
+          'https://thecozycook.com/wp-content/uploads/2020/02/Copycat-McDonalds-French-Fries-.jpg',
+      },
+      {
+        name: 'Big Mac',
+        price: 50.8,
+        image:
+          'https://t3.ftcdn.net/jpg/01/00/01/98/240_F_100019883_JiV1c06nylljO3VEESkNvihShSzkqC50.jpg',
+      },
+      {
+        name: 'Chicken Burger',
+        price: 70,
+        image:
+          'https://images.pexels.com/photos/5474836/pexels-photo-5474836.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      },
+    ],
+    id: 2,
+  },
+  {
+    restaurantName: 'Maxican',
+    farAway: '7',
+    businessAddress: '15 Atlas Rd, Kempton Park',
+    images: require('../Assets/Maxican.jpg'),
+    coordinates: {lat: -26.1845336, lng: 28.2481691},
+    averageReview: 4.3,
+    numberOfReview: 700,
+    discount: null,
+    deliveryTime: 20,
+    collectTime: 10,
+    foodType: 'Chicken pizza, Vegetarian pizza',
+    productData: [
+      {
+        name: 'Hand cut chips',
+        price: 29.3,
+        image:
+          'https://thecozycook.com/wp-content/uploads/2020/02/Copycat-McDonalds-French-Fries-.jpg',
+      },
+      {
+        name: 'Big Mac',
+        price: 50.8,
+        image:
+          'https://t3.ftcdn.net/jpg/01/00/01/98/240_F_100019883_JiV1c06nylljO3VEESkNvihShSzkqC50.jpg',
+      },
+      {
+        name: 'Chicken Burger',
+        price: 70,
+        image:
+          'https://images.pexels.com/photos/5474836/pexels-photo-5474836.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      },
+    ],
+    id: 3,
+  },
+];
+
+export const restaurantsData2 = [
+  {
+    restaurantName: 'Fast food',
+    farAway: '21.2',
+    businessAddress: '22 Bessie street, Cape Town',
+    images: require('../Assets/fastFood.jpg'),
+    averageReview: 4.9,
+    numberofReview: 272,
+    coordinates: {lat: -26.1888612, lng: 28.246325}, // Added colon after coordinates
+    discount: 10,
+    deliveryTime: 15,
+    collectTime: 5,
+    foodType: 'Burgers, Wraps, Milkshakes...',
+    productData: [
+      {
+        name: 'Hand cut chips',
+        price: 29.3,
+        image:
+          'https://thecozycook.com/wp-content/uploads/2020/02/Copycat-McDonalds-French-Fries-.jpg',
+      },
+      {
+        name: 'Big Mac',
+        price: 50.8,
+        image:
+          'https://t3.ftcdn.net/jpg/01/00/01/98/240_F_100019883_JiV1c06nylljO3VEESkNvihShSzkqC50.jpg',
+      },
+      {
+        name: 'Chicken Burger',
+        price: 70,
+        image:
+          'https://images.pexels.com/photos/5474836/pexels-photo-5474836.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      },
+    ],
+    id: 0,
+  },
+  {
+    restaurantName: 'Burger',
+    farAway: '12.7',
+    businessAddress: '22 Bessie street, Cape Town',
+    images: require('../Assets/Burger.jpg'),
+    averageReview: 4.3,
+    numberOfReview: 306,
+    coordinates: {lat: 26.1891648, lng: 28.2441808},
+    discount: 20,
+    deliveryTime: 30,
+    collectTime: 18,
+    foodType: 'Chicken, Chicken wings',
+    productData: [
+      {
+        name: 'Hand cut chips',
+        price: 29.3,
+        image:
+          'https://thecozycook.com/wp-content/uploads/2020/02/Copycat-McDonalds-French-Fries-.jpg',
+      },
+      {
+        name: 'Big Mac',
+        price: 50.8,
+        image:
+          'https://t3.ftcdn.net/jpg/01/00/01/98/240_F_100019883_JiV1c06nylljO3VEESkNvihShSzkqC50.jpg',
+      },
+      {
+        name: 'Chicken Burger',
+        price: 70,
+        image:
+          'https://images.pexels.com/photos/5474836/pexels-photo-5474836.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      },
+    ],
+    id: 1,
+  },
+  {
+    restaurantName: 'Salad',
+    farAway: '5',
+    businessAddress: '17 Olivia Rd, Johannesburg',
+    images: require('../Assets/Salad.jpg'),
+    coordinates: {lat: -26.1886781, lng: 28.244879},
+    averageReview: 4.9,
+    numberOfReview: 1272,
+    discount: 12,
+    deliveryTime: 25,
+    collectTime: 15,
+    foodType: 'Flame grilled beef Burgers',
+    productData: [
+      {
+        name: 'Hand cut chips',
+        price: 29.3,
+        image:
+          'https://thecozycook.com/wp-content/uploads/2020/02/Copycat-McDonalds-French-Fries-.jpg',
+      },
+      {
+        name: 'Big Mac',
+        price: 50.8,
+        image:
+          'https://t3.ftcdn.net/jpg/01/00/01/98/240_F_100019883_JiV1c06nylljO3VEESkNvihShSzkqC50.jpg',
+      },
+      {
+        name: 'Chicken Burger',
+        price: 70,
+        image:
+          'https://images.pexels.com/photos/5474836/pexels-photo-5474836.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      },
+    ],
+    id: 2,
+  },
+  {
+    restaurantName: 'Coffee',
+    farAway: '7',
+    businessAddress: '15 Atlas Rd, Kempton Park',
+    images: require('../Assets/Coffee.jpg'),
+    coordinates: {lat: -26.1845336, lng: 28.2481691},
+    averageReview: 4.3,
+    numberOfReview: 700,
+    discount: null,
+    deliveryTime: 20,
+    collectTime: 10,
+    foodType: 'Chicken pizza, Vegetarian pizza',
+    productData: [
+      {
+        name: 'Hand cut chips',
+        price: 29.3,
+        image:
+          'https://thecozycook.com/wp-content/uploads/2020/02/Copycat-McDonalds-French-Fries-.jpg',
+      },
+      {
+        name: 'Big Mac',
+        price: 50.8,
+        image:
+          'https://t3.ftcdn.net/jpg/01/00/01/98/240_F_100019883_JiV1c06nylljO3VEESkNvihShSzkqC50.jpg',
       },
       {
         name: 'Chicken Burger',
@@ -232,7 +510,7 @@ export const menuDetailedData = [
     meal: 'Big Mac',
     price: 70.2,
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVgA1qexBup3FXpc4lPkcrp0bLhcSK-sJXAFv6aL_yhQ&s',
+      'https://t3.ftcdn.net/jpg/01/00/01/98/240_F_100019883_JiV1c06nylljO3VEESkNvihShSzkqC50.jpg',
     details: 'McFeast features two 100% fresh beef burger patties that are hot',
     preferenceTitle: [
       'Choose your 2 dips',
@@ -296,10 +574,10 @@ export const menuDetailedData = [
   },
 
   {
-    meal: 'Hand cut chips',
-    price: 29.3,
+    meal: 'Chicken Cheese Burger',
+    price: 99.3,
     image:
-      'https://thecozycook.com/wp-content/uploads/2020/02/Copycat-McDonalds-French-Fries-.jpg',
+      'https://media.istockphoto.com/id/172449461/photo/chicken-burger.jpg?s=612x612&w=0&k=20&c=hxb7Yr7ZtGbfJGeHWMMBFl-VdiDoZdKd7TeZHj3wFEs=',
     details: 'Two 100% fresh beef burger patties that are hot,deliciously',
     preferenceTitle: [
       'Choose your 2 dips',
@@ -429,13 +707,79 @@ export const menuDetailedData = [
     required: [true, true, true, false, false],
     id: 2,
   },
-
   {
-    meal: 'Big Mac',
+    meal: 'Pizza',
+    price: 45.7,
+    image:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIat_LJFZS6Lsf-OCtm0A_UiIrmPO-AzTiJdbK2LoOBBcMJJvnvBJwbtFxII1EF64m220&usqp=CAU',
+    details: 'Two 100% fresh beef burger patties that are hot,deliciously',
+    preferenceTitle: [
+      'Choose your 2 dips',
+      'Choose your 1st drink flavour',
+      'Choose your 2nd drink flavour',
+      'Would you like to add a side?',
+      'Would you Like any extra sauce?',
+    ],
+    preferenceData: [
+      [
+        {name: 'Jalapeno Dip', price: 8.91, checked: false, id: 0},
+        {name: 'Sweet & Sour Dip', price: 8.75, checked: false, id: 1},
+        {name: 'BBQ Dip', price: 11.99, checked: false, id: 2},
+      ],
+
+      [
+        {name: 'Small Coke', price: 8.9, checked: false, id: 0},
+        {name: 'Small Fanta Orange', price: 8.9, checked: false, id: 1},
+        {name: 'Small Sprite', price: 11.9, checked: false, id: 2},
+        {name: 'Small Coke Zero', price: 3.95, checked: false, id: 3},
+        {name: 'Small Syoney Zero', price: 3.95, checked: false, id: 4},
+        {name: 'Small Apple Juice', price: 10.95, checked: false, id: 5},
+        {name: 'Small Strawberry Shake', price: 16.95, checked: false, id: 6},
+        {name: 'Small Chocolate Shake', price: 16.95, checked: false, id: 7},
+      ],
+
+      [
+        {name: 'Small Coke', price: 8.9, checked: false, id: 0},
+        {name: 'Small Fanta Orange', price: 8.9, checked: false, id: 1},
+        {name: 'Small Sprite', price: 11.9, checked: false, id: 2},
+        {name: 'Small Coke Zero', price: 3.95, checked: false, id: 3},
+        {name: 'Small Syoney Zero', price: 3.95, checked: false, id: 4},
+        {name: 'Small Apple Juice', price: 10.95, checked: false, id: 5},
+        {name: 'Small Strawberry Shake', price: 16.95, checked: false, id: 6},
+        {name: 'Small Chocolate Shake', price: 16.95, checked: false, id: 7},
+        {name: 'Small Vanilla Shake', price: 17.95, checked: false, id: 8},
+      ],
+
+      [
+        {name: 'debonairs sauce', price: 8.9, checked: false, id: 0},
+        {name: 'BBQ Sauce', price: 8.9, checked: false, id: 1},
+        {name: 'Tikka Sauce', price: 11.9, checked: false, id: 2},
+      ],
+
+      [
+        {name: 'Small Coke', price: 8.9, checked: false, id: 0},
+        {name: 'Small Fanta Orange', price: 8.9, checked: false, id: 1},
+        {name: 'Small Sprite', price: 11.9, checked: false, id: 2},
+        {name: 'Small Coke Zero', price: 3.95, checked: false, id: 3},
+        {name: 'Small Syoney Zero', price: 3.95, checked: false, id: 4},
+        {name: 'Small Apple Juice', price: 10.95, checked: false, id: 5},
+        {name: 'Small Strawberry Shake', price: 16.95, checked: false, id: 6},
+        {name: 'Small Chocolate Shake', price: 16.95, checked: false, id: 7},
+        {name: 'Small Vanilla Shake', price: 17.95, checked: false, id: 8},
+      ],
+    ],
+
+    minimum_quatity: [2, 1, 1, null, null],
+    counter: [0, 0, 0, 0, 0],
+    required: [true, true, true, false, false],
+    id: 2,
+  },
+  {
+    meal: 'Roman Pizza',
     price: 50.8,
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVgA1qexBup3FXpc4lPkcrp0bLhcSK-sJXAFv6aL_yhQ&s',
-    details: 'McFeast features two 100% fresh beef burger patties that are hot',
+      'https://tastecooking.com/wp-content/uploads/2023/03/Roman-Pizza.jpeg',
+    details: 'McFeast features two 100% pizza that are hot',
     preferenceTitle: [
       'Choose your 2 dips',
       'Choose your 1st drink flavour',
@@ -503,7 +847,7 @@ export const menuDetailedData = [
     price: 29.3,
     image:
       'https://thecozycook.com/wp-content/uploads/2020/02/Copycat-McDonalds-French-Fries-.jpg',
-    details: 'Two 100% fresh beef burger patties that are hot,deliciously',
+    details: 'Two 100% fresh fries that are hot,deliciously',
 
     preferenceTitle: [
       'Choose your 2 dips',
@@ -569,11 +913,11 @@ export const menuDetailedData = [
   },
 
   {
-    meal: 'Big Mac',
+    meal: 'Club Sandwich',
     price: 70.2,
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVgA1qexBup3FXpc4lPkcrp0bLhcSK-sJXAFv6aL_yhQ&s',
-    details: 'McFeast features two 100% fresh beef burger patties that are hot',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEeiPWGmV6ZFMDH4YZU6u2Pm7Ipx6q5343ug&usqp=CAU',
+    details: 'McFeast features two 100% fresh club sandwich that are hot',
     preferenceTitle: [
       'Choose your 2 dips',
       'Choose your 1st drink flavour',

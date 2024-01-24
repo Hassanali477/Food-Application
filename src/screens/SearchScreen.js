@@ -9,7 +9,7 @@ import {
   Dimensions,
 } from 'react-native';
 import SearchComponent from '../components/SearchComponent';
-import {filterData} from '../global/Data';
+import {filterData, menuDetailedData} from '../global/Data';
 import {color} from '../global/Styles';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -59,7 +59,7 @@ const Footer = ({navigation}) => {
   return (
     <FlatList
       contentContainerStyle={{paddingBottom: '15%'}}
-      data={filterData}
+      data={menuDetailedData}
       keyExtractor={item => item.id}
       renderItem={({item, index}) => (
         <TouchableWithoutFeedback
@@ -67,7 +67,7 @@ const Footer = ({navigation}) => {
             navigation.navigate('SearchResultScreen', {item: item.name});
           }}>
           <View style={styles.imageView}>
-            <ImageBackground style={styles.image} source={item.image}>
+            <ImageBackground style={styles.image} source={{uri: item.image}}>
               <View style={styles.textView}>
                 <Text
                   style={{
@@ -75,7 +75,7 @@ const Footer = ({navigation}) => {
                     fontWeight: 'bold',
                     fontSize: 16,
                   }}>
-                  {item.name}
+                  {item.meal}
                 </Text>
               </View>
             </ImageBackground>

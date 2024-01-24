@@ -5,12 +5,22 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  FlatList,
 } from 'react-native';
 import React, {Component} from 'react';
 import {color} from '../global/Styles';
 import {Icon, CheckBox, Button} from 'react-native-elements';
 import {menuDetailedData} from '../global/Data';
-export default class PrefrencesScreen extends Component {
+import AsyncStorage from '@react-native-async-storage/async-storage';
+{
+  /* {---------------Redux Imports------------} */
+}
+import {connect} from 'react-redux';
+import * as userActions from '../redux/actions/user';
+import {bindActionCreators} from 'redux';
+import MenuCard from '../components/MenuCard';
+
+class PrefrencesScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,26 +30,58 @@ export default class PrefrencesScreen extends Component {
       minimum_quatity:
         menuDetailedData[this.props.route.params.index].minimum_quatity,
       counter: menuDetailedData[this.props.route.params.index].counter,
+      data: menuDetailedData[this.props.route.params.index],
+      quantity: 1,
     };
   }
+  onPlus = () => {
+    var {quantity} = this.state;
+    quantity = quantity + 1;
+    this.setState({quantity});
+  };
+  onMinus = () => {
+    var {quantity} = this.state;
+    quantity = quantity - 1;
+    if (quantity < 1) {
+      quantity = 1;
+    }
+    this.setState({quantity});
+  };
+  handleAddToCart = index => {
+    var {
+      actions,
+      userData: {cartitems},
+    } = this.props;
+    const {meal, details, price} = menuDetailedData[index];
+    var obj = {
+      productName: meal,
+      image: this.props.route.params.image,
+      price: price,
+      orignelPrice: price,
+      productDetails: details,
+      quantity: this.state.quantity,
+    };
+    cartitems.push(obj);
+    actions.cartItems(cartitems);
+    AsyncStorage.setItem('cartitems_key', JSON.stringify(cartitems));
+  };
+
   render() {
     const index = this.props.route.params.index;
     const {meal, details, price} = menuDetailedData[index];
+
     return (
       <View style={styles.container}>
         <ScrollView>
           <View style={styles.header}>
-            <View style={styles.subHeader}></View>
             <Image
               style={styles.backgroundImage}
               source={{
-                uri: 'https://t3.ftcdn.net/jpg/05/89/70/46/360_F_589704609_b84XoVDaeopctL2Iz0lG4IQT86Dzm7xz.jpg',
+                uri: this.props.route.params.image,
               }}
             />
           </View>
-          <View style={styles.bar}>
-            <Text style={styles.title}>Choose a Prefrences</Text>
-          </View>
+
           <View style={styles.view12}>
             <Icon
               name="arrow-left"
@@ -55,12 +97,12 @@ export default class PrefrencesScreen extends Component {
             <Text style={styles.text1}>{meal}</Text>
             <Text style={styles.text2}>{details}</Text>
           </View>
-          <View style={styles.view2}>
+          {/* <View style={styles.view2}>
             <Text style={styles.text3}>Choose a meal type</Text>
             <View style={styles.view3}>
               <Text style={styles.text4}>REQUIRED</Text>
             </View>
-          </View>
+          </View> */}
           <View style={styles.view4}>
             <View style={styles.view5}>
               <View style={styles.view6}>
@@ -71,126 +113,87 @@ export default class PrefrencesScreen extends Component {
                   checked={true}
                   checkedColor={color.buttons}
                 />
-                <Text style={styles.text5}>- - - - - -</Text>
+                <Text style={styles.text5}>Price</Text>
               </View>
               <Text style={styles.text6}>PKR{price.toFixed(2)}</Text>
             </View>
           </View>
-          {/* <View style={styles.view2}>
-            <Text style={styles.text3}>Choose a meal type</Text>
-            <View style={styles.view3}>
-              <Text style={styles.text4}>2 REQUIRED</Text>
-            </View>
-          </View> */}
-          <View>
-            {this.state.prefrences.map(item => (
-              <View key={item.id}>
-                <View style={styles.view7}>
-                  <Text style={styles.text8}>
-                    {
-                      menuDetailedData[index].preferenceTitle[
-                        this.state.prefrences.indexOf(item)
-                      ]
-                    }
-                  </Text>
-                  {this.state.required[this.state.prefrences.indexOf(item)] && (
-                    <View style={styles.view9}>
-                      <Text style={styles.text7}>
-                        {
-                          this.state.minimum_quatity[
-                            this.state.prefrences.indexOf(item)
-                          ]
-                        }{' '}
-                        REQUIRED
-                      </Text>
-                    </View>
-                  )}
-                </View>
-                <View style={styles.view10}>
-                  {item.map(items => (
-                    <TouchableOpacity
-                      key={items.id}
-                      onPress={() => {
-                        const id = this.state.prefrences.indexOf(item);
-                        if (this.state.minimum_quatity[id] !== null) {
-                          const check = item.filter(items =>
-                            items.checked ? items : null,
-                          );
-                          this.state.prefrences[id].forEach(i => {
-                            if (i.id === items.id) {
-                              if (
-                                check.length < this.state.minimum_quatity[id]
-                              ) {
-                                i.checked = !i.checked;
-                              } else {
-                                i.checked = false;
-                              }
-                            }
-                          }),
-                            (this.state.counter[id] =
-                              this.state.counter[id] + 1),
-                            this.setState({
-                              prefrences: [...this.state.preferences],
-                              counter: [this.state.counter],
-                            });
-                        } else {
-                          this.state.prefrences[id].forEach(i => {
-                            if (i.id === items.id) {
-                              i.checked = !i.checked;
-                            }
-                          });
-                          this.setState({
-                            preferences: [...this.state.prefrences],
-                          });
-                        }
-                      }}>
-                      <View style={styles.view4}>
-                        <View style={styles.view19}>
-                          <View style={styles.view6}>
-                            <CheckBox
-                              center
-                              checkedIcon="check-square-o"
-                              uncheckedIcon="square-o"
-                              checked={items.checked}
-                              checkedColor={color.buttons}
-                            />
-                            <Text style={{color: color.grey2, marginLeft: -10}}>
-                              {items.name}
-                            </Text>
-                          </View>
-                          <Text style={styles.text6}>
-                            PKR {items.price.toFixed(2)}
-                          </Text>
-                        </View>
-                      </View>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-              </View>
-            ))}
+          <View
+            style={[
+              styles.view4,
+              {paddingHorizontal: 20, paddingVertical: 20},
+            ]}>
+            <Text style={[styles.text5, {fontWeight: '900', fontSize: 16}]}>
+              MORE ITEMS
+            </Text>
+          </View>
+
+          <View style={styles.view2}>
+            <FlatList
+              style={{backgroundColor: 'white'}}
+              data={menuDetailedData}
+              // horizontal={true}
+              keyExtractor={(item, index) => index.toString()}
+              renderItem={({item, index}) => (
+                <TouchableOpacity
+                  onPress={() => {
+                    this.props.navigation.navigate('PrefrencesScreen', {
+                      image: item.image,
+                      index,
+                    });
+                  }}>
+                  <MenuCard
+                    productName={item.meal}
+                    image={item.image}
+                    price={item.price}
+                    productDetails={item.details}
+                  />
+                </TouchableOpacity>
+              )}
+              showsVerticalScrollIndicator={false}
+            />
           </View>
         </ScrollView>
         <View style={styles.view13}>
           <Text style={styles.text11}>Quantity</Text>
         </View>
         <View style={styles.view14}>
-          <View style={styles.view15}>
+          <TouchableOpacity
+            style={styles.view15}
+            onPress={() => this.onMinus()}>
             <Icon name="remove" type="material" color={'black'} size={30} />
-          </View>
-          <Text style={styles.text9}>1</Text>
-          <View style={styles.view16}>
+          </TouchableOpacity>
+          <Text style={styles.text9}>{this.state.quantity}</Text>
+          <TouchableOpacity style={styles.view16} onPress={() => this.onPlus()}>
             <Icon name="add" type="material" color={'black'} size={30} />
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={styles.view17}>
           <View style={styles.view18}>
-            <Text style={styles.text10}>Add 1 to Cart PKR 299</Text>
+            <TouchableOpacity onPress={() => this.handleAddToCart(index)}>
+              <Text style={styles.text10}>Add to Cart </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
     );
   }
 }
+
+{
+  /* {---------------redux State ------------} */
+}
+const mapStateToProps = state => ({
+  userData: state.userData,
+});
+{
+  /* {---------------redux Actions ------------} */
+}
+const ActionCreators = Object.assign({}, userActions);
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(ActionCreators, dispatch),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(PrefrencesScreen);
 
 const styles = StyleSheet.create({
   container: {flex: 1},
@@ -204,7 +207,6 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: color.buttons,
     overflow: 'hidden',
-    height: 180, //HEADER_MAX_HEIGHT,
   },
   subHeader: {
     width: '100%',
@@ -216,7 +218,7 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     width: '100%', //null,
-    height: 240, //HEADER_MAX_HEIGHT,
+    height: 400, //HEADER_MAX_HEIGHT,
     resizeMode: 'cover',
   },
   bar: {

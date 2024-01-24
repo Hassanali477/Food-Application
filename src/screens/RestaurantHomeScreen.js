@@ -19,24 +19,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const initialLayout = SCREEN_WIDTH;
 const RestaurantHomeScreen = ({navigation, route}) => {
   const {id, restaurant} = route.params;
-  const [routes] = useState([
-    {key: 'first', title: 'MENU'},
-    {key: 'second', title: 'INFO'},
-    {key: 'third', title: 'REVIEWS'},
-    {key: 'fourth', title: 'GALLERY'},
-  ]);
   const [index, setIndex] = useState(0);
-  const renderTabBar = props => (
-    <TabBar
-      {...props}
-      indicatorStyle={{backgroundColor: color.cardbackground}}
-      tabStyle={styles.tabStyle}
-      scrollEnabled={true}
-      style={styles.tab}
-      labelStyle={styles.tabLabel}
-      contentContainerStyle={styles.tabContainer}
-    />
-  );
 
   const UpdateRoute1 = () => {
     return <View></View>;
@@ -45,7 +28,7 @@ const RestaurantHomeScreen = ({navigation, route}) => {
   const menuPressed = () => {
     navigation.navigate('MenuProductScreen');
   };
- 
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -88,49 +71,10 @@ const RestaurantHomeScreen = ({navigation, route}) => {
                 </Text>
               </View>
             </View>
-            <View style={styles.view5}>
-              <Text style={styles.text6}>Collect</Text>
-              <View style={styles.view7}>
-                <Text style={styles.text7}>
-                  {restaurantsData[id].collectTime}
-                </Text>
-                <Text style={styles.text8}>min</Text>
-              </View>
-            </View>
-            <View style={styles.view8}>
-              <Text style={styles.text6}>Delivery</Text>
-              <View style={styles.view9}>
-                <Text style={styles.text9}>
-                  {restaurantsData[id].deliveryTime}
-                </Text>
-                <Text style={styles.text11}>min</Text>
-              </View>
-            </View>
           </View>
-        </View>
-        <View style={styles.view10}>
-          <TabView
-            navigationState={{index, routes}}
-            renderScene={UpdateRoute1}
-            onIndexChange={setIndex}
-            initialLayout={initialLayout}
-            renderTabBar={renderTabBar}
-            tabBarPosition="top"
-          />
         </View>
         {index === 0 && <MenuScreen onPress={menuPressed} />}
       </ScrollView>
-      <TouchableOpacity>
-        <View style={styles.view11}>
-          <View style={styles.view12}>
-            <Text style={styles.text13}>View Cart</Text>
-            <View style={styles.view13}>
-              <Text style={styles.text13}>0</Text>
-            </View>
-          </View>
-        </View>
-      </TouchableOpacity>
-     
     </View>
   );
 };
@@ -158,7 +102,7 @@ const styles = StyleSheet.create({
 
   view3: {flex: 8},
 
-  text2: {fontSize: 20, fontWeight: 'bold', color: 'black'},
+  text2: {fontSize: 20, fontWeight: 'bold', color: 'black', marginTop: 10},
 
   text3: {fontSize: 15, color: color.grey2},
 
@@ -215,13 +159,12 @@ const styles = StyleSheet.create({
   text9: {
     fontSize: 15,
     fontWeight: 'bold',
-    color: 'white',
+    color: 'black',
     marginTop: 5,
   },
   view9: {
     width: 40,
     height: 40,
-    backgroundColor: color.buttons,
     alignItems: 'center',
     borderRadius: 20,
     justifyContent: 'space-around',
@@ -234,7 +177,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
 
-  text11: {fontSize: 13, color: color.cardbackground, marginBottom: 5},
+  text11: {fontSize: 13, color: 'black', marginBottom: 5},
 
   view10: {elevation: 10, backgroundColor: color.pagebackground},
 
